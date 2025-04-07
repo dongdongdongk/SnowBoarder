@@ -6,13 +6,19 @@ using UnityEngine.SceneManagement;
 
 public class CrashDetector : MonoBehaviour
 {
-
+    [SerializeField] float loadDelay = 1f;
     void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.CompareTag("Ground"))
+        if (collision.CompareTag("Ground"))
         {
-            Debug.Log("Player head crashed!");
-            SceneManager.LoadScene(0);
+            Invoke("ReloadScene", loadDelay);
         }
+    }
+
+    void ReloadScene()
+    {
+        Debug.Log("Player head crashed!");
+        SceneManager.LoadScene(0);
+
     }
 }
