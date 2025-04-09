@@ -13,6 +13,7 @@ public class FinishLine : MonoBehaviour
         if (collision.CompareTag("Player"))
         {
             finishEffect.Play(); // Play the particle effect
+            GetComponent<AudioSource>().Play(); // Play the audio source
             Invoke("ReloadScene", loadDelay); // Call ReloadScene after 2 seconds
         }
     }
