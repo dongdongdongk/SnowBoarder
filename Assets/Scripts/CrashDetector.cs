@@ -13,6 +13,7 @@ public class CrashDetector : MonoBehaviour
     {
         if (collision.CompareTag("Ground"))
         {
+            FindObjectOfType<PlayerController>().DisableControls(); // Disable player controls
             GetComponent<AudioSource>().PlayOneShot(crashSFX); // Play the audio source
             crashEffect.Play(); // Play the particle effect
             Invoke("ReloadScene", loadDelay);
